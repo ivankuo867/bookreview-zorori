@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1 #{title}: [第 #{book.no} 集] #{book.title}
+ 
+  p 怪傑佐羅力 [第 #{book.no} 集]
+  p #[strong 作者:] #{book.author}
+  p #[strong Status:] #{book.status} 
+  
+  div(style='margin-left:20px;margin-top:20px')
+
+  p #[strong STAR:] #{book.review_star} 顆星
+  p #[strong 無責書評:]  
+  textarea#review_summary.form-control(type='textarea', placeholder='Summary' name='review_summary' rows='3' readonly ) #{book.review_summary}
+  p #[strong 日期:] #{book.review_date_formatted} 
+  
+  p Do you really want to delete this Book?
+    
+  form(method='POST' action='')
+
+    div.form-group
+      input#bookid.form-control(type='hidden',name='bookid', required='true', value=book._id )
+
+    button.btn.btn-primary(type='submit') Delete
