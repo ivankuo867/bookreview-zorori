@@ -1,8 +1,9 @@
 extends layout
 
-block content
+block content     
   h1 怪傑佐羅力 [第 #{book.no} 集]
   h3 書名 : #{book.title}
+  img(src='../../img/book_'+ `${book.no}` +'.jpg') 
   p #[strong 作者:] #{book.author}
   p #[strong Status:] #{book.status} 
   
