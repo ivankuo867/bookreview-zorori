@@ -31,6 +31,7 @@ block content
       label(for='review_star') STAR:
         if book
           select#review_star.form-control(type='select' placeholder='Select review_star' name='review_star' required='true')
+            option(value='0' selected=(book.review_star=='0'?'selected':false)) 0顆星: 還沒看過
             option(value='1' selected=(book.review_star=='1'?'selected':false)) 1顆星: 失望,作者要加油喔
             option(value='2' selected=(book.review_star=='2'?'selected':false)) 2顆星: 普通,不太懂笑點在哪
             option(value='3' selected=(book.review_star=='3'?'selected':false)) 3顆星: 很棒,感謝佐羅力+伊豬豬+魯豬豬
@@ -38,11 +39,12 @@ block content
             option(value='5' selected=(book.review_star=='5'?'selected':false)) 5顆星: 超讚,想給作者一張貼紙
         else
           select#review_star.form-control(type='select' placeholder='Select status' name='review_star' required='true')
-            option(value='1' ) 1顆星
-            option(value='2' ) 2顆星
-            option(value='3' ) 3顆星
-            option(value='4' ) 4顆星
-            option(value='5' ) 5顆星      
+            option(value='0' ) 0顆星: 還沒看過
+            option(value='1' ) 1顆星: 失望,作者要加油喔
+            option(value='2' ) 2顆星: 普通,不太懂笑點在哪
+            option(value='3' ) 3顆星: 很棒,感謝佐羅力+伊豬豬+魯豬豬
+            option(value='4' ) 4顆星: 超有趣,搞笑又感人,還學到很多做人道理喔
+            option(value='5' ) 5顆星: 超讚,想給作者一張貼紙      
     div.form-group
       label(for='review_summary') Summary:
       textarea#review_summary.form-control(type='textarea', placeholder='Summary' name='review_summary' rows='3' required='true') #{undefined===book ? '' : book.review_summary}
