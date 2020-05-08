@@ -9,23 +9,27 @@ block content
   
   div(style='margin-left:20px;margin-top:20px')
 
-  p #[strong 無責書評:] 
-  p #{book.review_star} 顆星   
+  p #[strong 無責書評:]   
   if book.review_star==1
-    img(src="../../img/star.png" ) 
+    p 1顆星: 失望,作者要加油喔
+    img(src="../../img/star.png" )     
   else if book.review_star==2
+    p 2顆星: 普通,不太懂笑點在哪
     img(src="../../img/star.png" ) 
     img(src="../../img/star.png" ) 
   else if book.review_star==3
+    p 3顆星: 很棒,感謝佐羅力+伊豬豬+魯豬豬
     img(src="../../img/star.png" ) 
     img(src="../../img/star.png" ) 
     img(src="../../img/star.png" ) 
   else if book.review_star==4
+    p 4顆星: 超有趣,搞笑又感人,還學到很多做人道理喔
     img(src="../../img/star.png" ) 
     img(src="../../img/star.png" ) 
     img(src="../../img/star.png" )
     img(src="../../img/star.png" )
   else if book.review_star==5
+    p 5顆星: 超讚,想給作者一張貼紙
     img(src="../../img/star.png" ) 
     img(src="../../img/star.png" ) 
     img(src="../../img/star.png" )
