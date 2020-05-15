@@ -17,12 +17,12 @@ block content
       li #[strong 看過的書本:] !{data.read_count}  ( 比例 !{read_per} % )
       each book in data.read_points
         li #[strong 平均分數:] !{book.tmyavg}  
-          img(src="img/star.png" )        
+          img(src="img/star.png" )      
 
   script(src="https://d3js.org/d3.v4.js")
   script(src="js/main.js")
   script.
-    chartGen();
+    chartGen(!{JSON.stringify(data.read_stars)});    
     
   
      

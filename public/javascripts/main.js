@@ -1,9 +1,9 @@
 
-function chartGen () {   
+function chartGen (data) {   
   // set the dimensions and margins of the graph
-  var margin = {top: 30, right: 30, bottom: 70, left: 60},
-      width = 460 - margin.left - margin.right,
-      height = 400 - margin.top - margin.bottom;
+  var margin = {top: 10, right: 10, bottom: 30, left: 30},
+      width = 320 - margin.left - margin.right,
+      height = 200 - margin.top - margin.bottom;
   
   // append the svg object to the body of the page
   var svg = d3.select("#mychart")
@@ -17,9 +17,8 @@ function chartGen () {
   // Parse the Data
   //d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/7_OneCatOneNum_header.csv", function(data) {
   //d3.csv("js/data.csv", function(data) {
-  d3.json("js/data.json", function(data) {
-  //let jdata = JSON.parse(data.read_stars) ;
-  //d3.json( jdata , function(data){
+  //d3.json("js/data.json", function(data) {
+
   // X axis
   var x = d3.scaleBand()
     //.title("ssssssss")
@@ -50,8 +49,8 @@ function chartGen () {
       .attr("width", x.bandwidth())
       .attr("height", function(d) { return height - y(d.count); })
       .attr("fill", "#69b3a2")
-  
-  })
+    
+// })  for read data  from  file : d3.json(, function (data).......) 
 }
 
 
