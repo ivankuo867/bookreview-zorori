@@ -3,7 +3,7 @@ var express = require('express');
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
-var mongoDB = process.env.MONGODB_URI ||'mongodb+srv://ivan:gogoivan@cluster0-vfyyz.mongodb.net/bookreview?retryWrites=true&w=majority';
+var mongoDB = 'mongodb+srv://ivan:gogoivan@cluster0-vfyyz.mongodb.net/bookreview?retryWrites=true&w=majority';
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
@@ -36,6 +36,7 @@ app.use('/users', usersRouter);
 //2020 add routes of catalog
 app.use('/catalog', catalogRouter);
 app.use('/img', express.static(path.join(__dirname, 'public/images')));
+app.use('/js', express.static(path.join(__dirname, 'public/javascripts')));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
