@@ -15,13 +15,11 @@ function chartGen (data) {
             "translate(" + margin.left + "," + margin.top + ")");
   
   // Parse the Data
-  //d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/7_OneCatOneNum_header.csv", function(data) {
   //d3.csv("js/data.csv", function(data) {
   //d3.json("js/data.json", function(data) {
 
   // X axis
   var x = d3.scaleBand()
-    //.title("ssssssss")
     .range([ 0, width ])
     .domain(data.map(function(d) { return d._id; }))
     .padding(0.2);
@@ -34,7 +32,7 @@ function chartGen (data) {
   
   // Add Y axis
   var y = d3.scaleLinear()
-    .domain([0, 7])
+    .domain([0, getMax(data, "count")])
     .range([ height, 0]);
   svg.append("g")
     .call(d3.axisLeft(y));
@@ -51,6 +49,16 @@ function chartGen (data) {
       .attr("fill", "#69b3a2")
     
 // })  for read data  from  file : d3.json(, function (data).......) 
+}
+
+function getMax(arr, prop) {
+    var max;
+    for (var i=0 ; i<arr.length ; i++) {
+        if (max == null || parseInt(arr[i][prop]) > parseInt(max[prop]))
+            max = arr[i];
+    }
+    //return max;
+    return max[prop];
 }
 
 

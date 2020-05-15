@@ -3,11 +3,12 @@ extends layout
 block content         
   body(style="font-family:Microsoft JhengHei;")
   h1= title
-    img(src="img/logo.jpg" )   
+      
   p 歡迎光臨 #[em A&C 無責書評佐羅力], 由Austin & Claire評價看過的佐羅力故事.  
   
   h1 動態統計內容  
-    div#mychart  
+    div#mychart    
+      img(src="img/logo.jpg" ) 
   if error
     p Error getting dynamic content.
   else
