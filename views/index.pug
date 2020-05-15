@@ -1,18 +1,30 @@
 extends layout
 
-block content
+block content         
+  body(style="font-family:Microsoft JhengHei;")
   h1= title
-    img(src="img/logo.jpg" ) 
-    
-  p 歡迎光臨 #[em A&C 無責書評佐羅力], 由Austin & Claire評價看過的佐羅力故事.
-
-  h1 動態統計內容
-
+    img(src="img/logo.jpg" )   
+  p 歡迎光臨 #[em A&C 無責書評佐羅力], 由Austin & Claire評價看過的佐羅力故事.  
+  
+  h1 動態統計內容  
+    div#mychart  
   if error
     p Error getting dynamic content.
   else
-    p The library has the following record counts:
+    - var read_per = Math.round(100*data.read_count/data.book_count) 
+    ul(style="font-size:20px")
+      li #[strong 書本數量:] !{data.book_count}
+      li #[strong 看過的書本:] !{data.read_count}  ( 比例 !{read_per} % )
+      each book in data.read_points
+        li #[strong 平均分數:] !{book.tmyavg}  
+          img(src="img/star.png" )        
 
-    ul
-      li #[strong Books:] !{data.book_count}
-
+  script(src="https://d3js.org/d3.v4.js")
+  script(src="js/main.js")
+  script.
+    chartGen();
+    
+  
+     
+        
+  

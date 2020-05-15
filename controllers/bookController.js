@@ -13,6 +13,23 @@ exports.index = function(req, res) {
         book_count: function(callback) {
             Book.countDocuments({}, callback); // Pass an empty object as match condition to find all documents of this collection
         }, 
+        read_count: function(callback) {
+            Book.countDocuments({'status':{$ne:'還沒看過'}}, callback); // Pass an empty object as match condition to find all documents of this collection
+        },
+        read_points: function(callback) {
+            Book.aggregate([
+                            { $match :  {'status':{ $ne:'還沒看過' } } },
+                            { $group : {_id: null, myavg: {$avg:'$review_star'}  }},
+                            { $project: { tmyavg: { $trunc: [ '$myavg', 1 ] } } }
+                           ], callback); // Pass an empty object as match condition to find all documents of this collection
+        },
+        read_stars: function(callback) {
+            Book.aggregate([
+                            { $match :  {'status':{ $ne:'還沒看過' } } },
+                            { $group : {_id: '$review_star', count: {$sum:1} }},
+                            { $sort : {_id: 1} }
+                           ], callback); // Pass an empty object as match condition to find all documents of this collection
+        },
     }, function(err, results) {
         res.render('index', { title: 'A&C 無責書評佐羅力', error: err, data: results });
     });
