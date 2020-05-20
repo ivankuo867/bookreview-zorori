@@ -9,9 +9,14 @@ block content
         if `${count}` % 5 == 0
           tr
         td(width="155")
-          img(src='../../img/book_'+ `${book.no}` +'.jpg' width="150" ) 
-          p [#{book.no}] : #{book.title}    
-          p 還沒看過 
+          a(href=book.url) 
+            img(src='../../img/book_'+ `${book.no}` +'.jpg' width="150" ) 
+            p [#{book.no}] : #{book.title}    
+          if book.status == '還沒看過'
+            p 還沒看過
+          else
+            - for(var i = 0; i < book.review_star; i++)  
+              img(src="../../img/star.png" width="20" ) 
 
         - count = count+1
 
