@@ -15,9 +15,9 @@ block content
           if book.status == '還沒看過'
             p 還沒看過
           else
-            - for(var i = 0; i < book.review_star; i++)  
+            - for(var i = 0; i < book.review_star; i++)  {
               img(src="../../img/star.png" width="20" ) 
-
+            - }
         - count = count+1
 
       else
