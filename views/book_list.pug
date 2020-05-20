@@ -3,15 +3,19 @@ extends layout
 block content
   h1= title 
   ul          
-    each book in book_list
-      li 
-        if book.status=="還沒看過"
-          img(src="../img/uncheck.png" )
-        else
-          img(src="../img/check.png" )                  
-        a(href=book.url)  [ #{book.no} ] #{book.title} 
+    - var count = 0
+    table(border='1' style="font-family:Microsoft JhengHei; font-size:16px" )
+      each book in book_list             
+        if `${count}` % 5 == 0
+          tr
+        td(width="155")
+          img(src='../../img/book_'+ `${book.no}` +'.jpg' width="150" ) 
+          p [#{book.no}] : #{book.title}    
+          p 還沒看過 
 
-    else
-      li There are no books
+        - count = count+1
+
+      else
+        li There are no books
 
 
